@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SignupScreen from '../Screens/SignupScreen';
 import SignInformationScreen from '../Screens/SignInformationScreen';
 import SigninScreen from '../Screens/SigninScreen';
 import UploadPicScreen from '../Screens/UploadPicScreen';
@@ -23,13 +22,13 @@ import RequestScreen from '../Screens/RequestScreen';
 import EditProfileScreen from '../Screens/EditProfileScreen';
 import MessageScreen from '../Screens/MessageScreen';
 import NotificationsScreen from '../Screens/NotificationsScreen';
-import OnboardingNavigation from '../Screens/OnboardingScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 import CencelRequestScreen from '../Screens/CencelRequestScreen';
 import ChangePasswordScreen from '../Screens/ChangePasswordScreen';
 import ReviewScreen from '../Screens/ReviewScreen';
 import PaymentOptionsScreen from '../Screens/PaymentOptionsScreen';
 import AdvanceBookedScreen from '../Screens/AdvanceBookedScreen';
+import GateInScreen from '../Screens/GateInScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,14 +36,14 @@ export default function StackNavigation() {
   return (
     <Stack.Navigator
       screenOptions={{header: () => null}}
-      initialRouteName="Onboarding">
-      <Stack.Screen name="Onboarding" component={OnboardingNavigation} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
+      initialRouteName="Signin">
+    
       <Stack.Screen name="Information" component={SignInformationScreen} />
       <Stack.Screen name="Signin" component={SigninScreen} />
       <Stack.Screen name="UploadPic" component={UploadPicScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="OTP" component={OTPScreen} />
+      <Stack.Screen name="GateIn" component={GateInScreen} />
       <Stack.Screen name="BottomTabDashboard" component={BottomTabDashboard} />
       <Stack.Screen name="Filters" component={FilterScreen} />
       <Stack.Screen name="Map" component={MapViewScreen} />

@@ -49,7 +49,11 @@ export default class UploadPicScreen extends Component {
       <ImageBackground
         style={{height: height, flex: 1}}
         source={require('../Assets/Signup__bg.png')}>
-        <Header />
+        <Header
+          onPress={() => {
+            navigation.navigate('Information');
+          }}
+        />
         <ScrollView style={{flex: 1, paddingHorizontal: 18}}>
           <View
             style={{
@@ -123,7 +127,7 @@ export default class UploadPicScreen extends Component {
             <Buttons
               placeholder="Save"
               onPress={() => {
-                navigation.navigate('BottomTabDashboard');
+                navigation.navigate('GateIn');
               }}
             />
           </View>

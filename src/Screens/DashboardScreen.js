@@ -14,6 +14,8 @@ import InputBox from '../Components/InputBox';
 import Selector from '../Components/Selector';
 import WarehouseCard from '../Components/WarehouseCard';
 import CardDetails from '../Components/CardDetails';
+import AvailableSpaceCard from '../Components/AvailableSpaceCard';
+import {LineChart} from 'react-native-chart-kit';
 export default class DashboardScreen extends Component {
   constructor() {
     super();
@@ -31,194 +33,128 @@ export default class DashboardScreen extends Component {
           height: height,
           flex: 1,
           paddingVertical: 16,
+          paddingHorizontal: 20,
         }}>
-        <View style={{paddingHorizontal: 20}}>
+        <View
+          style={{
+            marginTop: 6,
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
           <View
             style={{
               display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
             }}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Profile');
-              }}>
-              <Image
-                source={require('../Assets/userPic.png')}
-                style={{width: 45, height: 45}}
-              />
-            </TouchableOpacity>
-
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Filters');
-                }}>
-                <Svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={22.854}
-                  height={22.854}
-                  viewBox="0 0 27.854 27.854">
-                  <G
-                    data-name="Icon feather-search"
-                    fill="none"
-                    stroke="#7b7b7b"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}>
-                    <Path
-                      data-name="Path 706"
-                      d="M23.04 12.27A10.77 10.77 0 1112.27 1.5a10.77 10.77 0 0110.77 10.77z"
-                    />
-                    <Path
-                      data-name="Path 707"
-                      d="M25.733 25.733l-5.856-5.856"
-                    />
-                  </G>
-                </Svg>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Notifications');
-                  if (this.state.newNotifications === true) {
-                    this.setState({
-                      newNotifications: false,
-                    });
-                  }
-                }}
-                style={{marginLeft: 10}}>
-                <Svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={22.476}
-                  height={22.15}
-                  viewBox="0 0 22.476 26.15">
-                  <G
-                    data-name="Icon ionic-ios-notifications-outline"
-                    fill="#7b7b7b">
-                    <Path
-                      data-name="Path 2322"
-                      d="M13.595 22.424a.911.911 0 00-.893.717 1.762 1.762 0 01-.352.766 1.329 1.329 0 01-1.132.415 1.351 1.351 0 01-1.132-.415 1.762 1.762 0 01-.352-.766.911.911 0 00-.893-.717.917.917 0 00-.893 1.118 3.142 3.142 0 003.27 2.609 3.136 3.136 0 003.27-2.609.92.92 0 00-.893-1.118z"
-                    />
-                    <Path
-                      data-name="Path 2323"
-                      d="M22.194 19.044c-1.083-1.3-3.213-2.07-3.213-7.912 0-6-2.9-8.407-5.6-8.985-.253-.058-.436-.135-.436-.379v-.186A1.652 1.652 0 0011.26 0h-.042a1.652 1.652 0 00-1.687 1.581v.189c0 .238-.183.321-.436.379-2.707.585-5.6 2.989-5.6 8.985 0 5.842-2.13 6.6-3.213 7.912A1.272 1.272 0 001.4 21.09h19.697a1.271 1.271 0 001.097-2.046zm-2.742.373H3.055a.28.28 0 01-.232-.469A7.735 7.735 0 004.3 16.801a13.447 13.447 0 001.005-5.669 9.2 9.2 0 011.47-5.579 4.541 4.541 0 012.72-1.773 2.526 2.526 0 001.308-.675.591.591 0 01.837-.013 2.615 2.615 0 001.322.688 4.541 4.541 0 012.721 1.774 9.2 9.2 0 011.47 5.579 13.447 13.447 0 001.005 5.669 7.832 7.832 0 001.512 2.179.264.264 0 01-.218.436z"
-                    />
-                  </G>
-                </Svg>
-                {this.state.newNotifications ? (
-                  <View
-                    style={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: 6,
-                      backgroundColor: PRIMARY,
-                      top: -20,
-                      right: -12,
-                    }}
-                  />
-                ) : null}
-              </TouchableOpacity>
-            </View>
-          </View>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            style={{
-              marginVertical: 22,
-              display: 'flex',
-              flexDirection: 'row',
-            }}>
-            {catagrories.map(item => {
-              return <Selector key={item} text={item} />;
-            })}
-          </ScrollView>
-        </View>
-        <ScrollView style={{flex: 1, paddingHorizontal: 20}}>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: 'bold',
-              color: TEXT_COLOR,
-              marginBottom: 22,
-            }}>
-            Nearby Warehouses
-          </Text>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <WarehouseCard
-              onPress={() => {
-                navigation.navigate('WarehouseCardDetails');
-              }}
-            />
-            <WarehouseCard
-              onPress={() => {
-                navigation.navigate('WarehouseCardDetails');
-              }}
-            />
-            <WarehouseCard
-              onPress={() => {
-                navigation.navigate('WarehouseCardDetails');
-              }}
-            />
-            <WarehouseCard
-              onPress={() => {
-                navigation.navigate('WarehouseCardDetails');
-              }}
-            />
-          </ScrollView>
-          <View
-            style={{
-              alignItems: 'flex-end',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginVertical: 8,
-            }}>
-            <Text style={{fontSize: 16, fontWeight: 'bold', color: TEXT_COLOR}}>
-              More Listing
+            <Text style={{color: DISABLE, fontSize: 12}}>Hello</Text>
+            <Text style={{color: TEXT_COLOR, fontSize: 16, fontWeight: 'bold'}}>
+              Jhonny
             </Text>
-            <TouchableOpacity>
-              <Text style={{color: PRIMARY, textDecorationLine: 'underline'}}>
-                See more
-              </Text>
-            </TouchableOpacity>
           </View>
-          <CardDetails
+          <TouchableOpacity
             onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
+              navigation.navigate('Profile');
+            }}>
+            <Image
+              source={require('../Assets/userPic.png')}
+              style={{width: 45, height: 45}}
+            />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: 40,
+          }}>
+          <Text style={{fontSize: 16, color: TEXT_COLOR}}>Info</Text>
+          <TouchableOpacity>
+            <Svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={18.155}
+              height={18.064}>
+              <Path
+                data-name="Path 1393"
+                d="M16.757 11.336a.452.452 0 00-.452.452v4.015a1.358 1.358 0 01-1.356 1.356H2.261A1.358 1.358 0 01.9 15.803V4.02a1.358 1.358 0 011.356-1.356h4.019a.452.452 0 100-.9H2.261A2.263 2.263 0 000 4.02v11.783a2.263 2.263 0 002.261 2.261h12.687a2.263 2.263 0 002.261-2.261v-4.016a.452.452 0 00-.452-.451zm0 0"
+                fill="#4571b0"
+              />
+              <Path
+                data-name="Path 1394"
+                d="M17.03.596a2.035 2.035 0 00-2.878 0L6.085 8.663a.452.452 0 00-.116.2l-1.061 3.83a.452.452 0 00.556.557l3.83-1.061a.452.452 0 00.2-.116l8.067-8.067a2.037 2.037 0 000-2.878zM7.071 8.957l6.6-6.6 2.131 2.126-6.6 6.6zm-.425.853l1.7 1.7-2.353.652zm10.276-6.445l-.48.48-2.13-2.13.48-.48a1.13 1.13 0 011.6 0l.531.531a1.132 1.132 0 01-.002 1.598zm0 0"
+                fill="#4571b0"
+              />
+            </Svg>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <AvailableSpaceCard
+            svg={
+              <Svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={47.891}
+                height={47.891}>
+                <Path
+                  d="M47.891 8.451V0h-8.452v2.817H8.451V0H0v8.451h2.817v30.988H0v8.451h8.451v-2.816h30.988v2.817h8.451v-8.452h-2.816V8.451zm-5.634 30.988h-2.818v2.817H8.451v-2.817H5.634V8.451h2.817V5.634h30.988v2.817h2.817z"
+                  fill="#fff"
+                />
+                <Path
+                  d="M11.991 21.953l9.96-9.96 1.992 1.992-9.96 9.96zM23.94 33.905l9.96-9.96 1.992 1.992-9.96 9.96zM14.978 30.916L30.914 14.98l1.992 1.992L16.97 32.908z"
+                  fill="#fff"
+                />
+              </Svg>
+            }
+            meter="m"
+            squre="2"
+            text="Area Available "
+            space="65"
           />
-          <CardDetails
-            onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
+
+          <AvailableSpaceCard
+            svg={
+              <Svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={46.8}
+                height={46.8}>
+                <G data-name="Group 1101">
+                  <G data-name="Group 1100">
+                    <Path
+                      data-name="Path 3096"
+                      d="M17.267.4C7.651.4.4 3.366.4 7.3v32.2c0 3.934 7.251 6.9 16.867 6.9s16.867-2.966 16.867-6.9V7.3C34.133 3.366 26.882.4 17.267.4zM32.6 39.5c0 2.538-6.3 5.367-15.333 5.367S1.933 42.038 1.933 39.5V10.275c2.619 2.362 8.354 3.925 15.334 3.925s12.714-1.563 15.333-3.925zM17.267 12.667c-9.036 0-15.334-2.829-15.334-5.367s6.3-5.367 15.333-5.367S32.6 4.762 32.6 7.3s-6.3 5.367-15.333 5.367z"
+                      fill="#fff"
+                      stroke="#fff"
+                      strokeWidth={0.8}
+                    />
+                  </G>
+                </G>
+                <G data-name="Group 1103">
+                  <G data-name="Group 1102">
+                    <Path
+                      data-name="Path 3097"
+                      d="M45.633.4h-9.2a.766.766 0 00-.767.767v44.466a.766.766 0 00.767.767h9.2a.766.766 0 00.767-.767V1.167A.766.766 0 0045.633.4zm-.767 44.467h-7.667v-2.3h1.534a.767.767 0 000-1.533H37.2v-3.067h3.067a.767.767 0 000-1.533H37.2v-3.067h1.533a.767.767 0 000-1.533H37.2v-3.067h3.067a.767.767 0 000-1.533H37.2v-3.067h1.533a.767.767 0 000-1.533H37.2v-3.067h3.067a.767.767 0 000-1.533H37.2v-3.067h1.533a.767.767 0 000-1.533H37.2v-3.067h3.067a.767.767 0 000-1.533H37.2V5.766h1.533a.767.767 0 000-1.533H37.2v-2.3h7.667z"
+                      fill="#fff"
+                      stroke="#fff"
+                      strokeWidth={0.8}
+                    />
+                  </G>
+                </G>
+              </Svg>
+            }
+            meter="m"
+            squre="2"
+            text="Volume Available "
+            space="5"
           />
-          <CardDetails
-            onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
-          />
-          <CardDetails
-            onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
-          />
-          <CardDetails
-            onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
-          />
-          <CardDetails
-            onPress={() => {
-              navigation.navigate('WarehouseCardDetails');
-            }}
-          />
-        </ScrollView>
+        </View>
       </ImageBackground>
     );
   }

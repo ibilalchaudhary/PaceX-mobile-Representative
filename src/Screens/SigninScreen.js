@@ -132,37 +132,11 @@ export default class SigninScreen extends Component {
             <Buttons
               placeholder="Sign In"
               onPress={() => {
-                navigation.navigate('BottomTabDashboard');
+                navigation.navigate('Information');
               }}
             />
           </View>
-          <View
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text>Or Sign In with</Text>
-          </View>
-          <SocialLinks />
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginBottom: 50,
-            }}>
-            <Text>Don't have a account?</Text>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Signup');
-              }}>
-              <Text style={{textDecorationLine: 'underline', marginLeft: 5}}>
-                Sign Up
-              </Text>
-            </TouchableOpacity>
-          </View>
+        
         </ScrollView>
       </ImageBackground>
     );
