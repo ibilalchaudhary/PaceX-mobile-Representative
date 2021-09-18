@@ -14,7 +14,7 @@ import InputBox from '../Components/InputBox';
 import Selector from '../Components/Selector';
 import WarehouseCard from '../Components/WarehouseCard';
 import CardDetails from '../Components/CardDetails';
-export default class GateInScreen extends Component {
+export default class GateOutScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -62,7 +62,7 @@ export default class GateInScreen extends Component {
         </View>
         <View style={{display: 'flex', alignItems: 'center', marginTop: 160}}>
           <Text style={{color: DISABLE, fontSize: 18, fontWeight: 'bold'}}>
-            Gate In
+            Gate Out
           </Text>
         </View>
         <TouchableOpacity
@@ -70,33 +70,30 @@ export default class GateInScreen extends Component {
             navigation.navigate('BottomTabDashboard');
           }}
           style={{display: 'flex', alignItems: 'center', marginVertical: 20}}>
-          <Svg xmlns="http://www.w3.org/2000/svg" width={188} height={188}>
-            <G data-name="Group 3013">
-              <G data-name="Group 3012">
-                <G data-name="Group 3011">
-                  <Circle
-                    data-name="Ellipse 327"
-                    cx={94}
-                    cy={94}
-                    r={94}
-                    fill="#4571b0"
-                    opacity={0.14}
-                  />
-                  <Circle
-                    data-name="Ellipse 326"
-                    cx={70.5}
-                    cy={70.5}
-                    r={70.5}
-                    transform="translate(24 22)"
-                    fill="#4571b0"
-                  />
-                  <Path
-                    data-name="Icon awesome-arrow-right"
-                    d="M92.006 82.328l1.2-1.2a1.292 1.292 0 011.833 0l10.512 10.506a1.292 1.292 0 010 1.833L95.04 103.978a1.292 1.292 0 01-1.833 0l-1.2-1.2a1.3 1.3 0 01.022-1.855l6.516-6.207H83.006a1.3 1.3 0 01-1.3-1.3v-1.73a1.3 1.3 0 011.3-1.3h15.54l-6.518-6.204a1.29 1.29 0 01-.022-1.854z"
-                    fill="#f5f5f5"
-                  />
-                </G>
-              </G>
+          <Svg xmlns="http://www.w3.org/2000/svg" width={245} height={245}>
+            <G data-name="Group 3013" transform="translate(-6563 1180)">
+              <Circle
+                data-name="Ellipse 327"
+                cx={122.5}
+                cy={122.5}
+                r={122.5}
+                transform="translate(6563 -1180)"
+                fill="#4571b0"
+                opacity={0.14}
+              />
+              <Circle
+                data-name="Ellipse 326"
+                cx={91.5}
+                cy={91.5}
+                r={91.5}
+                transform="translate(6594 -1149)"
+                fill="#4571b0"
+              />
+              <Path
+                data-name="Icon awesome-arrow-right"
+                d="M6687.857-1044.2l-1.561 1.561a1.681 1.681 0 01-2.384 0l-13.668-13.661a1.681 1.681 0 010-2.384l13.669-13.673a1.681 1.681 0 012.384 0l1.56 1.557a1.689 1.689 0 01-.028 2.412l-8.477 8.075h20.212a1.683 1.683 0 011.688 1.688v2.25a1.683 1.683 0 01-1.688 1.687h-20.212l8.477 8.072a1.677 1.677 0 01.028 2.416z"
+                fill="#f5f5f5"
+              />
             </G>
           </Svg>
         </TouchableOpacity>

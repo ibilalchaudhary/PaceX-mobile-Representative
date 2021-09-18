@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   TextInput,
   ImageBackground,
+  Button,
 } from 'react-native';
 import Svg, {Path, G} from 'react-native-svg';
 import Header from '../Components/Header';
@@ -37,7 +38,7 @@ function RequestTextLines({heading, subHeading}) {
   );
 }
 
-export default class CencelRequestScreen extends Component {
+export default class AcceptRequestScreen extends Component {
   render() {
     const navigation = this.props.navigation;
 
@@ -48,7 +49,7 @@ export default class CencelRequestScreen extends Component {
         <Header
           heading="Request"
           onPress={() => {
-            navigation.navigate('Request');
+            navigation.navigate('BottomTabDashboard');
           }}
         />
         <ScrollView style={{flex: 1, paddingHorizontal: 20}}>
@@ -87,6 +88,14 @@ export default class CencelRequestScreen extends Component {
               subHeading="20 JUN 2021"
             />
           </View>
+          <View style={{marginTop: 80}}>
+            <Buttons
+              placeholder="Accept"
+              onPress={() => {
+                navigation.navigate('');
+              }}
+            />
+          </View>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('');
@@ -100,10 +109,8 @@ export default class CencelRequestScreen extends Component {
               backgroundColor: TEXT_COLOR,
               marginBottom: 22,
               borderRadius: 8,
-              marginTop: 170,
-              marginVertical: 50,
             }}>
-            <Text style={{color: WHITE}}>Cencel Request</Text>
+            <Text style={{color: WHITE}}>Decline</Text>
           </TouchableOpacity>
         </ScrollView>
       </ImageBackground>

@@ -16,9 +16,9 @@ import Buttons from '../Components/Buttons';
 import Logo from '../Components/Logo';
 import CodeInput from 'react-native-confirmation-code-input';
 import Header from '../Components/Header';
-import Reviews from '../Components/Reviews';
+import RequestCard from '../Components/RequestCard';
 
-export default class ReviewScreen extends Component {
+export default class RequestsScreen extends Component {
   render() {
     const navigation = this.props.navigation;
     return (
@@ -26,19 +26,27 @@ export default class ReviewScreen extends Component {
         style={{height: height, flex: 1}}
         source={require('../Assets/Signup__bg.png')}>
         <Header
-          heading="Reviews"
+          heading="Requests"
           onPress={() => {
-            navigation.navigate('WarehouseCardDetails');
+            navigation.navigate('BottomTabDashboard');
           }}
         />
         <ScrollView style={{flex: 1, paddingHorizontal: 18}}>
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
         </ScrollView>
       </ImageBackground>
     );

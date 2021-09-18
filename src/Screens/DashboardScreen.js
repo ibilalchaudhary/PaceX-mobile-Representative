@@ -7,15 +7,24 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import {DISABLE, PRIMARY, TEXT_COLOR, WHITE} from '../Constants/Colors';
+import {
+  DISABLE,
+  INPUT_BG,
+  PRIMARY,
+  TEXT_COLOR,
+  WHITE,
+} from '../Constants/Colors';
 import Svg, {G, Path} from 'react-native-svg';
-import {height, width} from '../Constants/Dimensions';
+import Dimensions, {height, width} from '../Constants/Dimensions';
 import InputBox from '../Components/InputBox';
 import Selector from '../Components/Selector';
 import WarehouseCard from '../Components/WarehouseCard';
 import CardDetails from '../Components/CardDetails';
 import AvailableSpaceCard from '../Components/AvailableSpaceCard';
+
 import {LineChart} from 'react-native-chart-kit';
+import RequestCard from '../Components/RequestCard';
+
 export default class DashboardScreen extends Component {
   constructor() {
     super();
@@ -23,9 +32,9 @@ export default class DashboardScreen extends Component {
       newNotifications: true,
     };
   }
+
   render() {
     const navigation = this.props.navigation;
-    const catagrories = ['Size', 'Health', 'Weight', 'Area', 'Height', 'Space'];
     return (
       <ImageBackground
         source={require('../Assets/main__background.png')}
@@ -72,7 +81,10 @@ export default class DashboardScreen extends Component {
             marginTop: 40,
           }}>
           <Text style={{fontSize: 16, color: TEXT_COLOR}}>Info</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('AddInfo');
+            }}>
             <Svg
               xmlns="http://www.w3.org/2000/svg"
               width={18.155}
@@ -155,6 +167,83 @@ export default class DashboardScreen extends Component {
             space="5"
           />
         </View>
+        {/* <View>
+          <Text>Bezier Line Chart</Text>
+          <LineChart
+            data={{
+              labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+              datasets: [
+                {
+                  data: [
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                  ],
+                },
+              ],
+            }}
+            width={width} // from react-native
+            height={220}
+            yAxisLabel="$"
+            yAxisSuffix="k"
+            yAxisInterval={1} // optional, defaults to 1
+            chartConfig={{
+              backgroundColor: WHITE,
+              backgroundGradientFrom: PRIMARY,
+              backgroundGradientTo: PRIMARY,
+              decimalPlaces: 2, // optional, defaults to 2dp
+              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              style: {
+                borderRadius: 16,
+              },
+              propsForDots: {
+                r: '6',
+                strokeWidth: '2',
+                stroke: '#ffa726',
+              },
+            }}
+            bezier
+            style={{
+              marginVertical: 8,
+              borderRadius: 16,
+              marginRight: 42,
+            }}
+          />
+        </View> */}
+        <Text style={{fontSize: 18, color: TEXT_COLOR, marginTop: 26}}>
+          Requests
+        </Text>
+        <ScrollView style={{flex: 1}}>
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+          <RequestCard
+            onPress={() => {
+              navigation.navigate('AcceptRequest');
+            }}
+          />
+        </ScrollView>
       </ImageBackground>
     );
   }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AdvanceBookingScreen from '../Screens/AdvanceBookingScreen';
+import RequestsScreen from '../Screens/RequestsScreen';
 import DashboardScreen from '../Screens/DashboardScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 import Svg, {Path, G} from 'react-native-svg';
@@ -45,8 +45,8 @@ export default function BottomTabDashboard() {
         }}
       />
       <Tab.Screen
-        name="Advance Booking"
-        component={AdvanceBookingScreen}
+        name="Requests"
+        component={RequestsScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <View

@@ -4,6 +4,7 @@ import {DISABLE, PRIMARY, TEXT_COLOR, WHITE} from '../Constants/Colors';
 import {Height, Width} from '../Constants/Constants';
 import Header from '../Components/Header';
 import Svg, {G, Path, Ellipse} from 'react-native-svg';
+import Buttons from '../Components/Buttons';
 
 function EditProfileHeadings({svg, text, lastItem}) {
   return (
@@ -336,6 +337,23 @@ export default class ProfileScreen extends Component {
               }
             />
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('GateOut');
+            }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: 50,
+              backgroundColor: TEXT_COLOR,
+              marginBottom: 22,
+              borderRadius: 8,
+              marginVertical: 20,
+            }}>
+            <Text style={{color: WHITE}}>Gate Out</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
