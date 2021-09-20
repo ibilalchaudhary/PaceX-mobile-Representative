@@ -12,8 +12,7 @@ import Svg, {G, Circle, Path} from 'react-native-svg';
 import {height, width} from '../Constants/Dimensions';
 import InputBox from '../Components/InputBox';
 import Selector from '../Components/Selector';
-import WarehouseCard from '../Components/WarehouseCard';
-import CardDetails from '../Components/CardDetails';
+
 export default class GateOutScreen extends Component {
   constructor() {
     super();

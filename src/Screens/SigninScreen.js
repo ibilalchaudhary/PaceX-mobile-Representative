@@ -14,7 +14,7 @@ import {height, width} from '../Constants/Dimensions';
 import Svg, {G, Path} from 'react-native-svg';
 import InputBox from '../Components/InputBox';
 import Buttons from '../Components/Buttons';
-import SocialLinks from '../Components/SocialLinks';
+
 import Logo from '../Components/Logo';
 
 export default class SigninScreen extends Component {

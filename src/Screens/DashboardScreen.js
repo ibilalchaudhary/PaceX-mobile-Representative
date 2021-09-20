@@ -18,13 +18,9 @@ import Svg, {G, Path} from 'react-native-svg';
 import Dimensions, {height, width} from '../Constants/Dimensions';
 import InputBox from '../Components/InputBox';
 import Selector from '../Components/Selector';
-import WarehouseCard from '../Components/WarehouseCard';
-import CardDetails from '../Components/CardDetails';
-import AvailableSpaceCard from '../Components/AvailableSpaceCard';
-
 import {LineChart} from 'react-native-chart-kit';
+import AvailableSpaceCard from '../Components/AvailableSpaceCard';
 import RequestCard from '../Components/RequestCard';
-
 export default class DashboardScreen extends Component {
   constructor() {
     super();
