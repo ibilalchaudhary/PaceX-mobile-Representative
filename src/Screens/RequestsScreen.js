@@ -16,7 +16,7 @@ import Buttons from '../Components/Buttons';
 import Logo from '../Components/Logo';
 import CodeInput from 'react-native-confirmation-code-input';
 import Header from '../Components/Header';
-import RequestCard from '../Components/RequestCard';
+import RequestCard from '../Components/RequestCard';                                                                                            
 
 export default class RequestsScreen extends Component {
   render() {
